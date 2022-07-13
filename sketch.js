@@ -240,7 +240,11 @@ function RenderVis(xo,yo,w,h,
   let triggerUpdateRawFromFetchedData=setInterval(updateRawFromFetchedData,triggerIntervalMinutesShort*60*1000);
   let triggerTimeAdvance=setInterval(timeStepAdvance,triggerIntervalMinutesShort*60*1000);
   let triggerUpdateTimer=setInterval(triggerUpdate,triggerIntervalMinutesShort*60*1000);
-
+  let hDistort=w*0.01;
+  let vDistort=w*0.01;
+  let emv=new EdgeMaskV(xo+w-vDistort,yo,xo+w-vDistort,yo+h,vDistort*1.2);
+  let emh=new EdgeMaskH(xo,yo+h-hDistort,xo+w,yo+h-hDistort,hDistort*1.2);
+  // let emv=new EdgeMaskV(390,0,390,400,10);
 
   triggerUpdate();
   fetchDataFromAPI();
@@ -310,6 +314,8 @@ function RenderVis(xo,yo,w,h,
     billboards.show();
     sparrows.preShow();
     locationData.show(aqData,palettes);
+    emv.show();
+    emh.show();
     sparrows.show(palettes);
     locationText(xo+0,yo+y,w,h*vProp3);
   };
@@ -331,6 +337,48 @@ function RenderVis(xo,yo,w,h,
   }
 }
 
+
+function EdgeMaskH(p0x,p0y, p1x, p1y,bow){
+  var range=p1x-p0x;
+  var controlRange=range*0.3;
+  var cp0x=p0x+controlRange;
+  var cp1x=p1x-controlRange;
+  var cp0y=p0y+bow;
+  var cp1y=p1y+bow;
+
+  this.show=function(){
+    noStroke();
+    fill(255,0,0,150);
+    beginShape();
+    vertex(p1x,p1y);
+    vertex(p1x,p1y+100);
+    vertex(p0x,p0y+100);
+    vertex(p0x,p0y);
+    bezierVertex(cp0x,cp0y,cp1x,cp1y,p1x,p1y);
+    endShape();
+  }
+}
+
+function EdgeMaskV(p0x,p0y, p1x, p1y,bow){
+  var range=p1y-p0y;
+  var controlRange=range*0.3;
+  var cp0y=p0y+controlRange;
+  var cp1y=p1y-controlRange;
+  var cp0x=p0x+bow;
+  var cp1x=p1x+bow;
+
+  this.show=function(){
+    noStroke();
+    fill(255,0,0,150);
+    beginShape();
+    vertex(p1x,p1y);
+    vertex(p1x+100,p1y);
+    vertex(p0x+100,p0y);
+    vertex(p0x,p0y);
+    bezierVertex(cp0x,cp0y,cp1x,cp1y,p1x,p1y);
+    endShape();
+  }
+}
 
 
 function testCard(){
