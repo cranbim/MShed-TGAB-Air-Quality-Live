@@ -241,9 +241,9 @@ function RenderVis(xo,yo,w,h,
   let triggerUpdateRawFromFetchedData=setInterval(updateRawFromFetchedData,triggerIntervalMinutesShort*60*1000);
   let triggerTimeAdvance=setInterval(timeStepAdvance,triggerIntervalMinutesShort*60*1000);
   let triggerUpdateTimer=setInterval(triggerUpdate,triggerIntervalMinutesShort*60*1000);
-  let hDistort=w*0.007;
-  let vDistort=w*0.0125;
-  let emv=new EdgeMaskV(xo+w-vDistort,yo,xo+w-vDistort,yo+h,vDistort*0.75);
+  let hDistort=w*0.01;
+  let vDistort=w*0.015;
+  let emv=new EdgeMaskV(xo+w-vDistort*1.15,yo,xo+w-vDistort,yo+h,vDistort*0.75);
   let emh=new EdgeMaskH(xo,yo+h-hDistort,xo+w,yo+h-hDistort,hDistort*0.5);
   // let emv=new EdgeMaskV(390,0,390,400,10);
 
@@ -349,7 +349,7 @@ function EdgeMaskH(p0x,p0y, p1x, p1y,bow){
 
   this.show=function(){
     noStroke();
-    fill(255,0,0,150);
+    fill(0);
     beginShape();
     vertex(p1x,p1y);
     vertex(p1x,p1y+100);
@@ -370,7 +370,7 @@ function EdgeMaskV(p0x,p0y, p1x, p1y,bow){
 
   this.show=function(){
     noStroke();
-    fill(255,0,0,150);
+    fill(0);
     beginShape();
     vertex(p1x,p1y);
     vertex(p1x+100,p1y);
