@@ -97,12 +97,12 @@ function Graph(x,y,w,h,targetVal, picLine, picOutl, label){
     image(picOutl,-picLine.width/2,-picOutl.height);
     pop();
     push();
-    translate(w*0.5,h*0.675);
+    translate(w*0.5,h*0.7);
     scale(isclLine);
     image(picLine,-picLine.width/2,-picLine.height);
     pop();
     push();
-    translate(0,h*0.75);
+    translate(0,h*0.775);
     textFont("loretta");
     textSize(w*0.155);//0.195
     textAlign(LEFT,BOTTOM);
@@ -110,14 +110,14 @@ function Graph(x,y,w,h,targetVal, picLine, picOutl, label){
     noStroke();
     label.forEach(function(l){
       text(l,w*0.05,0);
-      translate(0,w*0.2);
+      translate(0,w*0.18);
     });
     // text(label,w/2,0);
     pop();
     push();
     translate(0,h*0.93);
     textFont("loretta");
-    textSize(w*0.25);
+    textSize(w*0.23);
     textAlign(LEFT,BOTTOM);
     fill(0);
     noStroke();

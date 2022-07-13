@@ -162,7 +162,7 @@ function Sparrow(x,y0,y1,w,r,s){
 
   function newHop(health){
     isHopping=true;
-    hopHeight=random(0.05,0.3)*r*health;
+    hopHeight=random(0.05,0.3)*r*(0.1+health);
     if(random(10)<6){
       hopDist=ox-x;
       // isHoming=true;
@@ -246,7 +246,7 @@ function Sparrow(x,y0,y1,w,r,s){
         isHopping=false;
       }
     } else {
-      if(random(100)<(1+4*this.health)){
+      if(random(100)<(1.5+3*this.health)){
         if(random(10)<1){
           isFlying=true;
           flyDir=random(10)<5?-1:1;
@@ -296,7 +296,7 @@ function Sparrow(x,y0,y1,w,r,s){
     if(!this.isLive){
       noStroke();
       fill(palettes[2][0],palettes[2][1],palettes[2][2]);
-      ellipse(ox,y+s*0.25,s*0.3);
+      ellipse(ox,y+s*0.25,s*0.2);
     }
     pop();
   };
