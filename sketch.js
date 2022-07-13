@@ -1,4 +1,4 @@
-var par=8/16;//10/16;//12/21;//3/4;
+var par=9/16;//10/16;//12/21;//3/4;
 var orientLandscape=true; //true is normal projector orientation, flase is projector side mounted.)
 var cw,ch,pw,ph,ox,oy;
 var visualisation;
