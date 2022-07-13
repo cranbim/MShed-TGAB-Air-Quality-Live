@@ -304,9 +304,9 @@ function Sparrow(x,y0,y1,w,r,s){
 
 function Dirt(dirtFrames,level,s){
   var spots=[];
-  var maxSpots=100*level;
+  var maxSpots=80*level;
   var numSpots=floor(level*maxSpots);
-  var ttl=100*level;
+  var ttl=50*level;
 
   this.run=function(x,y,newLevel){
     level=newLevel;
@@ -438,8 +438,8 @@ function Soot(x,y,r,s,n){
 }
 
 function Mote(x,y,r,s){
-  var energy=1.5;
-  var ttlMax=60;
+  var energy=2;
+  var ttlMax=30;
   var ttl=ttlMax;
   var a=random(-1.5,0.5)*PI;
   var vel=p5.Vector.fromAngle(a).mult(energy);
