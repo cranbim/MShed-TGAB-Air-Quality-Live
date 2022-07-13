@@ -28,6 +28,17 @@ function BBImage(xo,yo,w3,h3,w,h,phrases,palettes, billboardChangeIntervalMinute
   var bbs=[];
   var buf3=createGraphics(w3,h3,WEBGL);
   var changeTime;
+  var prePhrases=[
+    "To breathe I need ",
+    "I go to ",
+    "I feel "
+
+  ];
+  var postPhrases=[
+    "",
+    " to breathe",
+    " when I breathe here"
+  ];
 
   this.buf3img=createImage(floor(w3),floor(h3));
   // bbs[0]=new BillBoard(w,h,phrases[0][0],palettes[5]);
@@ -40,9 +51,9 @@ function BBImage(xo,yo,w3,h3,w,h,phrases,palettes, billboardChangeIntervalMinute
   // showBB(bbs[1].img,0.85,0.6,-10,PI*0.05,250,150);
   // showBB(bbs[2].img,0.5,0.4,-10,0,250,150);
   // displayFirstBillboards();
-  bbs[0]=new BillBoard(w,h,phrases[0][0],palettes[5]);
-  bbs[1]=new BillBoard(w,h,phrases[1][0],palettes[5]);
-  bbs[2]=new BillBoard(w,h,phrases[2][0],palettes[5]);
+  bbs[2]=new BillBoard(w,h,prePhrases[0]+phrases[0][0]+postPhrases[0],palettes[5]);
+  bbs[0]=new BillBoard(w,h,prePhrases[1]+phrases[1][0]+postPhrases[1],palettes[5]);
+  bbs[1]=new BillBoard(w,h,prePhrases[2]+phrases[2][0]+postPhrases[2],palettes[5]);
   buf3.push();
   // buf3.background(128);
   buf3.translate(-w3/2,-h3/2,0);
@@ -76,9 +87,12 @@ function BBImage(xo,yo,w3,h3,w,h,phrases,palettes, billboardChangeIntervalMinute
     // currentPhraseChoice=(currentPhraseChoice+1)%numPhraseChoices;
     // console.log("up:"+currentPhraseChoice+" of "+numPhraseChoices);
     // bbs=[];
-    bbs[0]=new BillBoard(w,h,phrases[0][(currentPhraseChoices[0])],palettes[5]);
-    bbs[1]=new BillBoard(w,h,phrases[1][(currentPhraseChoices[0])],palettes[5]);
-    bbs[2]=new BillBoard(w,h,phrases[2][(currentPhraseChoices[0])],palettes[5]);
+    bbs[2]=new BillBoard(w,h,prePhrases[0]+phrases[0][(currentPhraseChoices[0])]+postPhrases[0],palettes[5]);
+    bbs[0]=new BillBoard(w,h,prePhrases[1]+phrases[1][(currentPhraseChoices[0])]+postPhrases[1],palettes[5]);
+    bbs[1]=new BillBoard(w,h,prePhrases[2]+phrases[2][(currentPhraseChoices[0])]+postPhrases[2],palettes[5]);
+    // bbs[0]=new BillBoard(w,h,phrases[0][(currentPhraseChoices[0])],palettes[5]);
+    // bbs[1]=new BillBoard(w,h,phrases[1][(currentPhraseChoices[0])],palettes[5]);
+    // bbs[2]=new BillBoard(w,h,phrases[2][(currentPhraseChoices[0])],palettes[5]);
     // bbs[1]=new BillBoard(w,h,phrases[1][(currentPhraseChoices[1])],palettes[5]);
     // bbs[2]=new BillBoard(w,h,phrases[2][(currentPhraseChoices[2])],palettes[5]);
     billboardToChange=0;//(billboardToChange+1)%3;

@@ -214,8 +214,8 @@ function Sparrow(x,y0,y1,w,r,s){
       flyEA=flyA+flyAOffset;
       var rel=sin(flyA/2);
       er=(0.7+noise(ex/170,ey/170+frameCount/50))*r*rel*this.health;
-      ex=x+cos(flyEA)*er*flyDir*0.75;
-      ey=y+sin(flyEA)*er;
+      ex=x+cos(flyEA)*er*flyDir*0.67;
+      ey=y+sin(flyEA)*er*1.2;
       flyA+=flyRot;
       if(flyA>=TWO_PI){
         flyA=0;
@@ -438,13 +438,13 @@ function Soot(x,y,r,s,n){
 }
 
 function Mote(x,y,r,s){
-  var energy=3;
+  var energy=1;
   var ttlMax=20;
   var ttl=ttlMax;
   var a=random(-1.5,0.5)*PI;
   var vel=p5.Vector.fromAngle(a).mult(energy);
   var pos=createVector(x+cos(a)*r,y+sin(a)*r);
-  var fall=0.05;
+  var fall=0.15;
 
   this.show=function(){
     fill(0,180*ttl/ttlMax);

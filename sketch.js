@@ -330,9 +330,9 @@ function RenderVis(xo,yo,w,h,
     textFont("loretta");
     textSize(lh*0.7);
     textAlign(LEFT,TOP);
-    text("24-hour average levels",lw*0.05,lh*0.0);
+    text("24-hour average levels",lw*0.05,-lh*0.2);
     // text("Tuesday 26 April 2022",lw*0.05,lh*0.4);
-    text("Nitrogen dioxide (NO2)",lw*0.55,lh*0.0);
+    text("Nitrogen dioxide (NO2)",lw*0.55,-lh*0.2);
     // text("Air Monitor data from BCC",lw*0.55,lh*0.4);
     pop();
   }
