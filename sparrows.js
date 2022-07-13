@@ -162,8 +162,8 @@ function Sparrow(x,y0,y1,w,r,s){
 
   function newHop(health){
     isHopping=true;
-    hopHeight=random(0.1,0.5)*r*health;
-    if(random(10)<4){
+    hopHeight=random(0.05,0.3)*r*health;
+    if(random(10)<6){
       hopDist=ox-x;
       // isHoming=true;
     } else {
