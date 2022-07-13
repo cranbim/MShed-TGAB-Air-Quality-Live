@@ -74,7 +74,7 @@ function Graph(x,y,w,h,targetVal, picLine, picOutl, label){
   this.targetVal=targetVal;
   var iar=picLine.width/picLine.height;
   var iscl=w*0.96/picLine.width;
-  var isclLine=iscl*0.9;
+  var isclLine=iscl*1.05;
 
   this.run=function(){
     this.val+=(this.targetVal-this.val)*0.05;

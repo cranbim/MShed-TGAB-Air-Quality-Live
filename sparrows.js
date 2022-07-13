@@ -6,8 +6,8 @@ function SparrowVis(x,y,w,h, numWires,sparrowsPerWire,birdFrames,flyFrames,dirtF
   var activeWires=new Array(numWires).fill(false);
 
   for(var j=numWires-1; j>=0; j--){
-    var y0=(j+(j%2==0?-0.15:0.15))*h*0.95/numWires+sparrowSize*3;
-    var y1=(j+(j%2==0?0.15:-0.15))*h*0.95/numWires+sparrowSize*3;
+    var y0=(j+(j%2==0?-0.15:0.15))*h*0.95/numWires+sparrowSize*0;
+    var y1=(j+(j%2==0?0.15:-0.15))*h*0.95/numWires+sparrowSize*0;
     var a=atan2(y1-y0,w);
     wires.push([y0,y1,a]);
     for(var i=0; i<sparrowsPerWire; i++){
@@ -75,7 +75,7 @@ function SparrowVis(x,y,w,h, numWires,sparrowsPerWire,birdFrames,flyFrames,dirtF
   this.preShow=function(){
     push();
     translate(x,y);
-    image(bgImgBirds,0,0,w,h);
+    image(bgImgBirds,0,0,w,h*0.9);
     pop();
   };
 
@@ -214,7 +214,7 @@ function Sparrow(x,y0,y1,w,r,s){
       flyEA=flyA+flyAOffset;
       var rel=sin(flyA/2);
       er=(0.7+noise(ex/170,ey/170+frameCount/50))*r*rel*this.health;
-      ex=x+cos(flyEA)*er*flyDir;
+      ex=x+cos(flyEA)*er*flyDir*0.75;
       ey=y+sin(flyEA)*er;
       flyA+=flyRot;
       if(flyA>=TWO_PI){

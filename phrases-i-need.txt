@@ -1,5 +1,5 @@
 --------------------------------------------------------max
-I need green spaces 1
-I need safe roads 2
-I need traffic free days 3
-I need fewer lorries 4
+I need green spaces
+I need safe roads
+I need traffic free days
+I need fewer lorries

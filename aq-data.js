@@ -2,7 +2,7 @@ function AQData(baseData,timesteps){
   this.params={
     minVal:0,
     rangeVal:50,
-    minValDisplayAvg:-10,
+    minValDisplayAvg:0,
     rangeValDisplayAvg:60,
     whoLimit:25,
     UKLimit:40

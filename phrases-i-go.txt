@@ -1,5 +1,5 @@
 --------------------------------------------------------max
-I go to the park 1
-I go to the seaside 2
-I go for a walk in the country 3
-I go to green spaces when it all feels too much 4
+I go to the park
+I go to the seaside
+I go for a walk in the country
+I go to green spaces when it all feels too much

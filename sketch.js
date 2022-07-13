@@ -221,8 +221,8 @@ function RenderVis(xo,yo,w,h,
                 ){
   let vProp0=0.3;//0.25 billboards
   let vProp1=0.45;//0.45 birds
-  let vProp2=0.2;//0.3 location averages
-  let vProp3=0.05;//bottom labels
+  let vProp2=0.225;//0.3 location averages
+  let vProp3=0.025;//bottom labels
 
   let y=0;
   // let billboards=new BillboardZone(xo+0,yo+y,w,h*vProp0);
@@ -328,12 +328,12 @@ function RenderVis(xo,yo,w,h,
     // rect(0,0,w,h)
     noStroke();
     textFont("loretta");
-    textSize(lh*0.35);
+    textSize(lh*0.7);
     textAlign(LEFT,TOP);
     text("24-hour average levels",lw*0.05,lh*0.0);
-    text("Tuesday 26 April 2022",lw*0.05,lh*0.4);
+    // text("Tuesday 26 April 2022",lw*0.05,lh*0.4);
     text("Nitrogen dioxide (NO2)",lw*0.55,lh*0.0);
-    text("Air Monitor data from BCC",lw*0.55,lh*0.4);
+    // text("Air Monitor data from BCC",lw*0.55,lh*0.4);
     pop();
   }
 }
