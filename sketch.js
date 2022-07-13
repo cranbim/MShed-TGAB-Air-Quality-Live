@@ -241,8 +241,8 @@ function RenderVis(xo,yo,w,h,
   let triggerUpdateRawFromFetchedData=setInterval(updateRawFromFetchedData,triggerIntervalMinutesShort*60*1000);
   let triggerTimeAdvance=setInterval(timeStepAdvance,triggerIntervalMinutesShort*60*1000);
   let triggerUpdateTimer=setInterval(triggerUpdate,triggerIntervalMinutesShort*60*1000);
-  let hDistort=w*0.02;
-  let vDistort=w*0.0125;
+  let hDistort=w*0.01;
+  let vDistort=w*0.02;
   let emv=new EdgeMaskV(xo+w-vDistort,yo,xo+w-vDistort,yo+h,vDistort*1.2);
   let emh=new EdgeMaskH(xo,yo+h-hDistort,xo+w,yo+h-hDistort,hDistort*0.5);
   // let emv=new EdgeMaskV(390,0,390,400,10);
