@@ -2,21 +2,56 @@ function BillBoard(w,h, phrase, palette){
   var prevPhrase="";
   var fillShade=random(255);
   var buf=createGraphics(w,h);
-  // buf.fill(0,50,fillShade);
   buf.clear();
-  // buf.fill(255);
-  // buf.stroke(0);
-  // buf.strokeWeight(5);
-  buf.noStroke();
-  buf.rect(0,0,w,h);
-  buf.fill(palette[0],palette[1],palette[2]);
-  buf.noStroke();
-  buf.strokeWeight(1);
-  buf.textAlign(LEFT, BASELINE);
-  buf.textFont("antarctican-headline");
-  buf.textSize(w*0.12);
-  buf.text(phrase,w*0.025,w*0.025,w*0.95,h-w*0.05);
+  var billBox=new BillBox(0,0,w,h,w*0.12,phrase.toUpperCase());
+  billBox.show(buf, palette);
+  // buf.noStroke();
+  // buf.rect(0,0,w,h);
+  // buf.fill(palette[0],palette[1],palette[2]);
+  // buf.noStroke();
+  // buf.strokeWeight(1);
+  // buf.textAlign(LEFT, BASELINE);
+  // buf.textFont("antarctican-headline");
+  // buf.textSize(w*0.12);
+  // buf.text(phrase,w*0.025,w*0.025,w*0.95,h-w*0.05);
   this.img=buf.get();
+}
+
+function BillBox(x,y,w,h,ts,message){
+  var words=message.split(" ");
+  var rows=[];
+  var tsNom=ts;
+
+  var tx=0;
+  var ty=0;
+  var currentRow=0;
+  textFont("antarctican-headline");
+  textSize(tsNom);
+  var rowText="";
+  words.forEach(function(word,i){
+    var tw=textWidth(rowText+(i==0?"":" ")+word);
+    if(tw>w){
+      rows.push(""+rowText);
+      rowText=""+word;
+    } else {
+      rowText=rowText+(i==0?"":" ")+word;
+    }
+  });
+  rows.push(""+rowText);
+
+  this.show=function(buf,palette){
+    buf.fill(palette[0],palette[1],palette[2]);
+    buf.noStroke();
+    buf.textFont("antarctican-headline");
+    buf.textSize(tsNom);
+    buf.textAlign(LEFT, TOP);
+    buf.push();
+    buf.translate(x,y+h/2-rows.length*tsNom/2);
+    rows.forEach(function(row,i){
+      buf.text(row,0,i*tsNom);
+    });
+    buf.pop();
+  }
 }
 
 function BBImage(xo,yo,w3,h3,w,h,phrases,palettes, billboardChangeIntervalMinutes, bgImgBillboards ){
@@ -41,21 +76,10 @@ function BBImage(xo,yo,w3,h3,w,h,phrases,palettes, billboardChangeIntervalMinute
   ];
 
   this.buf3img=createImage(floor(w3),floor(h3));
-  // bbs[0]=new BillBoard(w,h,phrases[0][0],palettes[5]);
-  // bbs[1]=new BillBoard(w,h,phrases[1][0],palettes[5]);
-  // bbs[2]=new BillBoard(w,h,phrases[2][0],palettes[5]);
-  // buf3.push();
-  // // buf3.background(128);
-  // buf3.translate(-w3/2,-h3/2,0);
-  // showBB(bbs[0].img,0.15,0.3,-10,-PI*0.05,250,150);
-  // showBB(bbs[1].img,0.85,0.6,-10,PI*0.05,250,150);
-  // showBB(bbs[2].img,0.5,0.4,-10,0,250,150);
-  // displayFirstBillboards();
   bbs[2]=new BillBoard(w,h,prePhrases[0]+phrases[0][0]+postPhrases[0],palettes[5]);
   bbs[0]=new BillBoard(w,h,prePhrases[1]+phrases[1][0]+postPhrases[1],palettes[5]);
   bbs[1]=new BillBoard(w,h,prePhrases[2]+phrases[2][0]+postPhrases[2],palettes[5]);
   buf3.push();
-  // buf3.background(128);
   buf3.translate(-w3/2,-h3/2,0);
   showBB(bbs[0].img,0.25,0.425,0,-PI*0.0125,0.4,0.225);
   showBB(bbs[1].img,0.775,0.29,0,PI*0.02,0.33,0.18);
@@ -79,36 +103,19 @@ function BBImage(xo,yo,w3,h3,w,h,phrases,palettes, billboardChangeIntervalMinute
   }
 
   function render(){
-    // console.log(">>>>>"+billboardToChange);
-
-    // for(var i=0; i<phrases.length; i++){
     currentPhraseChoices[billboardToChange]=(currentPhraseChoices[billboardToChange]+1)%phrases[billboardToChange].length;
-    // }
-    // currentPhraseChoice=(currentPhraseChoice+1)%numPhraseChoices;
-    // console.log("up:"+currentPhraseChoice+" of "+numPhraseChoices);
-    // bbs=[];
     bbs[2]=new BillBoard(w,h,prePhrases[0]+phrases[0][(currentPhraseChoices[0])]+postPhrases[0],palettes[5]);
     bbs[0]=new BillBoard(w,h,prePhrases[1]+phrases[1][(currentPhraseChoices[0])]+postPhrases[1],palettes[5]);
     bbs[1]=new BillBoard(w,h,prePhrases[2]+phrases[2][(currentPhraseChoices[0])]+postPhrases[2],palettes[5]);
-    // bbs[0]=new BillBoard(w,h,phrases[0][(currentPhraseChoices[0])],palettes[5]);
-    // bbs[1]=new BillBoard(w,h,phrases[1][(currentPhraseChoices[0])],palettes[5]);
-    // bbs[2]=new BillBoard(w,h,phrases[2][(currentPhraseChoices[0])],palettes[5]);
-    // bbs[1]=new BillBoard(w,h,phrases[1][(currentPhraseChoices[1])],palettes[5]);
-    // bbs[2]=new BillBoard(w,h,phrases[2][(currentPhraseChoices[2])],palettes[5]);
     billboardToChange=0;//(billboardToChange+1)%3;
 
     buf3.clear();
     buf3.push();
-    // buf3.background(128);
     buf3.translate(-w3/2,-h3/2,0);
-    // showBB(bbs[0].img,0.15,0.3,-10,-PI*0.05,250,150);
-    // showBB(bbs[1].img,0.85,0.6,-10,PI*0.05,250,150);
-    // showBB(bbs[2].img,0.5,0.4,-10,0,250,150);
     showBB(bbs[0].img,0.25,0.425,0,-PI*0.0125,0.4,0.225);
     showBB(bbs[1].img,0.775,0.29,0,PI*0.02,0.33,0.18);
     showBB(bbs[2].img,0.69,0.73,0,PI*0.02,0.3,0.18);
     buf3.pop();
-    // this.buf3img=buf3.get();
     return buf3.get();
   };
 
