@@ -76,10 +76,12 @@ function BBImage(xo,yo,w3,h3,w,h,phrases,palettes, billboardChangeIntervalMinute
     // currentPhraseChoice=(currentPhraseChoice+1)%numPhraseChoices;
     // console.log("up:"+currentPhraseChoice+" of "+numPhraseChoices);
     // bbs=[];
-    bbs[billboardToChange]=new BillBoard(w,h,phrases[billboardToChange][(currentPhraseChoices[billboardToChange])],palettes[5]);
+    bbs[0]=new BillBoard(w,h,phrases[0][(currentPhraseChoices[0])],palettes[5]);
+    bbs[1]=new BillBoard(w,h,phrases[1][(currentPhraseChoices[0])],palettes[5]);
+    bbs[2]=new BillBoard(w,h,phrases[2][(currentPhraseChoices[0])],palettes[5]);
     // bbs[1]=new BillBoard(w,h,phrases[1][(currentPhraseChoices[1])],palettes[5]);
     // bbs[2]=new BillBoard(w,h,phrases[2][(currentPhraseChoices[2])],palettes[5]);
-    billboardToChange=(billboardToChange+1)%3;
+    billboardToChange=0;//(billboardToChange+1)%3;
 
     buf3.clear();
     buf3.push();

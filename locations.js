@@ -45,15 +45,17 @@ function LocationData(x,y,w,h,n,picsLine, picsOutl,labels){
     push();
     translate(x,y);
     var whoLine=(aqData.params.whoLimit-aqData.params.minValDisplayAvg)/aqData.params.rangeValDisplayAvg;
-    var whoLineY=h*0.95-h*0.85*whoLine;
+    // var whoLineY=h*0.95-h*0.85*whoLine;
+    var whoLineY=h*0.425-h*0.45*whoLine;
     strokeWeight(h*0.015);
     stroke(255,0,0,150);
     line(w*0.01,whoLineY,w*0.99,whoLineY);
-    var UKLine=(aqData.params.UKLimit-aqData.params.minValDisplayAvg)/aqData.params.rangeValDisplayAvg;
-    var UKLineY=h*0.95-h*0.85*UKLine;
-    strokeWeight(h*0.01);
-    stroke(palettes[4][0],palettes[4][1],palettes[4][2],150);
-    line(w*0.01,UKLineY,w*0.99,UKLineY);
+    // var UKLine=(aqData.params.UKLimit-aqData.params.minValDisplayAvg)/aqData.params.rangeValDisplayAvg;
+    // var UKLineY=h*0.95-h*0.85*UKLine;
+    // strokeWeight(h*0.01);
+    // stroke(palettes[4][0],palettes[4][1],palettes[4][2],150);
+    // line(w*0.01,UKLineY,w*0.99,UKLineY);
+
     // textFont("loretta");
     // textSize(w*0.025);
     // textAlign(LEFT,BOTTOM);
@@ -83,11 +85,14 @@ function Graph(x,y,w,h,targetVal, picLine, picOutl, label){
     translate(x,y);
     noStroke();
     fill(palette[0],palette[1],palette[2]);
-    rect(w*0.02,h*0.95,w*0.96,-h*0.85*this.val);
+    // rect(w*0.02,h*0.95,w*0.96,-h*0.85*this.val);//all in one block
+    rect(w*0.02,h*0.95,w*0.96,-h*0.5);//base block
+    fill(palette[0],palette[1],palette[2]);
+    rect(w*0.02,h*0.425,w*0.96,-h*0.45*this.val);//graph block
     // fill(palette[0],palette[1],palette[2],50);
     // rect(w*0.02,h*0.95,w*0.96,-h*0.85*this.val);
     push();
-    translate(w*0.5,h*0.935-h*0.85*this.val);
+    translate(w*0.5,h*0.95-h*0.55-h*0.45*this.val);
     scale(iscl);
     image(picOutl,-picLine.width/2,-picOutl.height);
     pop();
