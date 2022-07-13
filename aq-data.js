@@ -51,14 +51,23 @@ function AQData(baseData,timesteps){
   }
 
   var timeSteps=[
-    -4,
-    -1,
-    2,
-    5,
-    8,
+    // -4,
+    // -1,
+    // 2,
+    // 5,
+    // 8,
+    // 11,
+    // 14,
+    // 17
+
+    -5,
+    -2,
+    1,
+    4,
+    7,
+    10,
     11,
-    14,
-    17
+    16
   ];
 
   var currentTimeStep=-1;
